@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create Comment</title>
+</head>
+<body>
+	<h3>Create Comment</h3>
+	
+	<form method="POST" action="{% url 'core:create_comment' user.username  post.pk  %}">
+	{% csrf_token %}
+
+	{{ comment_form.as_p }}	
+	<button type="Submit">Create Comment</button>
+	</form>
+</body>
+</html>

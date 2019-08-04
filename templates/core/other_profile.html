@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Profile</title>
+</head>
+<body>
+	<h2>This is  {{ user.username }}'s Profile 
+		<form action="{% url 'core:follow' user.username %}" method='post'>
+		{% csrf_token %}
+			<button type="Submit">Follow</button>
+			
+		</form>
+	</h2> 
+	<!-- <a href="{% url 'core:profile-update' user.username %}">Update Profile</a> -->
+<ul>
+  <li>Username: {{ user.username }}</li>
+  <li>Location: {{ user.profile.location }}</li>
+  <li>Birth Date: {{ user.profile.birth_date }}</li>
+</ul>
+
+<p>
+<!-- 	{% if feeds %} -->
+	<h3>Feed:</h3>
+	{% for feed in feeds %}
+	{{ feed.heading }}
+	<p>{{ feed.content }}</p>
+	<br>
+	{% endfor %}
+	<!-- {% endif %} -->
+
+</p>
+
+	<a href="{% url 'core:logout'  %}">Logout</a>
+</body>
+</html>
